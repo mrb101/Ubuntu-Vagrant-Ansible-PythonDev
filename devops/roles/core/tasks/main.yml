@@ -1,0 +1,37 @@
+- name: update apt
+  action: command /usr/bin/apt-get update
+  sudo: true
+
+- name: update cache 
+  apt: update_cache=yes
+  sudo: true
+
+# Install Python && Django packages
+
+- name: Install dev pkgs
+  apt: pkg={{ item }}
+  with_items:
+    - build-essential
+    - libpq-dev
+    - libevent-dev
+    - python-dev
+    - python-pip
+    - python-setuptools
+    - python-software-properties
+    - python3
+    - git
+    - curl
+    # Non essential
+    - libmemcached-dev
+    - memcached
+    - vim
+    - rxvt-unicode-256color
+
+- name: pip install stuff
+  pip: name={{ item }}
+  with_items:
+    - distribute
+    - virtualenv
+    - django
+    - selenium
+

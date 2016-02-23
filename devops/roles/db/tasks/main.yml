@@ -1,0 +1,27 @@
+---
+# Install Postgres
+#==============================================
+
+- name: install db server packages
+  action: apt pkg={{ item }} state=present
+  with_items:
+    - postgresql
+    - postgresql-contrib
+    - postgresql-common
+    - libpq-dev
+    - python-dev
+    - python-setuptools
+
+- name: install python libraries
+  action: easy_install name=psycopg2
+
+- name: add postgres user to admin group
+  action: user name=postgres groups=admin append=yes
+
+- name: add vagrant user to admin group
+  action: user name=vagrant groups=admin append=yes
+  
+- name: restart postgresql
+  action: service name=postgresql state=restarted
+  sudo: True
+
