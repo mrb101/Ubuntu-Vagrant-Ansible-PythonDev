@@ -8,9 +8,10 @@ This stack is based on Ubuntu Linx, Gunicorn, Nginx and Postgresql
 + Gunicorn
 + VirtualEnv
 + Python 2.7
-+ Django 1.5
++ Django
 + NGINX
 + PostgreSQL
++ Selenium
 
 ## Use
 
@@ -28,15 +29,15 @@ To create a new Django project
 
 ```
 vagrant ssh
-cd /vagrant
-./django.sh
+cd /webapp
+mkvirtual venv
 source venv/bin/activate
 ```
 
 Inside the VM start the Django server which will now be available via http://localhost:8000 or 8080 via NGINX
 
 ```
-manage.py runserver 0.0.0.0:8000
+manage.py runserver IP:PORT
 ```
 
 ## Postgres
