@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "../flaskapps/freefi/", "/home/vagrant/freefi", created:true
   config.vm.synced_folder "../flaskapps/hostel/", "/home/vagrant/hostel", created:true
   config.vm.synced_folder "../djangoapps/pos/", "/home/vagrant/pos", created:true
+  config.vm.synced_folder "../djangoapps/mehtab/", "/home/vagrant/mehtab", created:true
 
 
   config.vm.provision "ansible" do |ansible|
